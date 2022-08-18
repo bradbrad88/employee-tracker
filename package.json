@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A command line application for tracking employee roles",
   "main": "bin/index.js",
+  "type": "module",
   "bin": {
     "team": "./bin/index.js"
   },
@@ -15,6 +16,8 @@
   "author": "Brad Teague",
   "license": "MIT",
   "dependencies": {
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.1",
     "inquirer": "^9.1.0",
     "mysql2": "^2.3.3"
   },
