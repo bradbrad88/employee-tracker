@@ -1,31 +1,60 @@
-export const setup = database => `
+export const setup = (database) => `
   CREATE DATABASE ${database};
   
   USE ${database};
   
   CREATE TABLE departments (
-    id SERIAL,
+    id INT AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
     PRIMARY KEY(id)
   );
 
   CREATE TABLE roles (
-    id SERIAL,
-    title VARCHAR(30),
-    salary DECIMAL,
-    department_id BIGINT UNSIGNED,
+    id INT AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
+    department_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(department_id) REFERENCES departments(id)
   );
 
   CREATE TABLE employees (
-    id SERIAL,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    role_id BIGINT UNSIGNED,
-    manager_id BIGINT UNSIGNED,
+    id INT AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT NOT NULL,
+    manager_id INT,
     PRIMARY KEY(id),
     FOREIGN KEY(role_id) REFERENCES roles(id),
     FOREIGN KEY(manager_id) REFERENCES employees(id)
   );
+  `;
+
+export const seed = () => `
+    INSERT INTO departments
+      (name)
+    VALUES
+      ('Accounting'),
+      ('Marketing'),
+      ('Human Resources');
+
+    INSERT INTO roles
+      (title, salary, department_id)
+    VALUES
+      ('Senior Account Manager', 100000, 1),
+      ('Account Manager ', 70000, 1),
+      ('Chief of Marketing', 160000, 2),
+      ('Sales Manager', 112000, 2),
+      ('Junior Marketing Consultant', 86000, 2),
+      ('HR Director', 130000, 3),
+      ('Diversity Officer', 90000, 3);
+
+    INSERT INTO employees
+      (first_name, last_name, role_id, manager_id)
+    VALUES
+      ('Anabel', 'Strickland', 1, NULL),
+      ('Mackenzie', 'Mclaughlin', 2, 1),
+      ('Raquel', 'Peters', 3, NULL),
+      ('Cristian', 'Manning', 4, 3),
+      ('Rebecca', 'Velazquez', 6, Null);
   `;
