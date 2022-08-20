@@ -20,7 +20,7 @@ const createConnection = async () => {
   }
 };
 
-const conn = new Promise(async (resolve, reject) => {
+export const db = new Promise(async (resolve, reject) => {
   try {
     const conn = await createConnection();
     const [databases] = await conn.query(`show databases where \`database\` = '${DATABASE}'`);
