@@ -16,6 +16,7 @@ export const setup = (database) => `
     department_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(department_id) REFERENCES departments(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
   );
 
   CREATE TABLE employees (
@@ -25,8 +26,10 @@ export const setup = (database) => `
     role_id INT NOT NULL,
     manager_id INT,
     PRIMARY KEY(id),
-    FOREIGN KEY(role_id) REFERENCES roles(id),
+    FOREIGN KEY(role_id) REFERENCES roles(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(manager_id) REFERENCES employees(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
   );
   `;
 
