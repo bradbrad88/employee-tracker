@@ -29,7 +29,7 @@ export const setup = (database) => `
     FOREIGN KEY(role_id) REFERENCES roles(id)
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(manager_id) REFERENCES employees(id)
-    ON DELETE CASCADE ON UPDATE CASCADE
+    ON DELETE SET NULL ON UPDATE CASCADE
   );
   `;
 
