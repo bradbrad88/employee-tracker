@@ -1,7 +1,7 @@
 import mysql from "mysql2/promise";
 import { setup, seed } from "./setup.js";
 
-const { HOST, DATABASE, USR, PORT } = process.env;
+const { HOST, DATABASE, USR, PORT, PASS, NODE_ENV } = process.env;
 
 if (!DATABASE) throw new Error("Missing database environment variable");
 
@@ -11,6 +11,7 @@ const createConnection = async () => {
       host: HOST,
       user: USR,
       port: PORT,
+      password: PASS,
       multipleStatements: true,
     });
     return connection;
@@ -35,6 +36,7 @@ export const db = new Promise(async (resolve, reject) => {
 async function setupDatabase(connection) {
   try {
     await connection.query(setup(DATABASE));
+    if (NODE_ENV === "production") return;
     await connection.query(seed());
   } catch (error) {
     throw error;
