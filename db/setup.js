@@ -44,7 +44,7 @@ export const seed = () => `
     INSERT INTO roles
       (title, salary, department_id)
     VALUES
-      ('Senior Account Manager', 100000, 1),
+      ('Chief Accountant', 100000, 1),
       ('Account Manager ', 70000, 1),
       ('Chief of Marketing', 160000, 2),
       ('Sales Manager', 112000, 2),
@@ -59,5 +59,9 @@ export const seed = () => `
       ('Mackenzie', 'Mclaughlin', 2, 1),
       ('Raquel', 'Peters', 3, NULL),
       ('Cristian', 'Manning', 4, 3),
-      ('Rebecca', 'Velazquez', 6, Null);
+      ('Rebecca', 'Velazquez', 6, Null),
+      ('Mark', 'Lopez', 5, 3),
+      ('Jess', 'Grove', 7, 5),
+      ('Rajvinder', 'Singh', 5, 3),
+      ('Allan', 'Cabel', 2, 1);
   `;

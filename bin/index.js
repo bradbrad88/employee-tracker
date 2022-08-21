@@ -7,6 +7,7 @@ import "console.table";
 import mainMenu from "../lib/index.js";
 
 async function init() {
+  console.clear();
   while (true) {
     await mainMenu();
   }
