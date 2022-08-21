@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // Use environment variables in .env file to initialise database
 import "dotenv/config";
 // Initialise console.table module
